@@ -1,0 +1,121 @@
+
+\documentclass{article}
+
+% Deactivate sectsty warning when loading sectsty {{{
+\usepackage[immediate]{silence}
+\WarningFilter[temp]{latex}{Command}
+\usepackage{sectsty}
+    \sectionfont{\normalfont\sffamily\bfseries\color{blue!40!black}}
+    \subsectionfont{\normalfont\sffamily\bfseries\color{blue!30!black}}
+\DeactivateWarningFilters[temp]
+\makeatletter % disable the runtime redefinitions
+\let\SS@makeulinesect\relax
+\let\SS@makeulinepartchap\relax
+\makeatother
+% }}}
+
+\usepackage[margin=4cm]{geometry}
+    \setlength\parindent{0pt}
+\usepackage{fancyhdr}
+    \pagestyle{fancy}
+\usepackage{fontspec}
+    \setsansfont{Linux Biolinum O}
+\usepackage{polyglossia}
+    \setmainlanguage{german}
+\usepackage{sectsty}
+    \sectionfont{\normalfont\sffamily\bfseries\color{blue!40!black}}
+    \subsectionfont{\normalfont\sffamily\bfseries\color{blue!30!black}}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{siunitx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+    \lstset{language=Python,
+	basicstyle=\footnotesize\ttfamily,
+	breaklines=true,
+	framextopmargin=50pt,
+	frame=bottomline,
+	backgroundcolor=\color{white!86!black},
+	commentstyle=\color{blue},
+	keywordstyle=\color{red},
+	stringstyle=\color{orange!80!black}}
+\usepackage{tikz}
+
+\title{\textsf{\color{blue!40!black}Übungsblatt 0}}
+\author{Maurice Donner \and Jan Hubrich \and Adrian Müller}
+
+\begin{document}
+
+\maketitle
+
+\section{Beweis - $A \setminus B = A \cap \bar B$}
+\begin{flalign*}
+    \text{Def 1.}\quad & A \setminus B = \left\{ x \in U \mid x \in A \land x \not\in B \right\}&&\\
+    \text{Def 2.}\quad & \bar B = \left\{ x \in U \mid x \not\in B \right\} &&\\
+    \text{Def 3.}\quad & A \cap B = \left\{ x \in U \mid x \in A \land x \in B \right\} &&\\[.5cm]
+    \text{1.}\quad & \text{Sei}\ x \in A \setminus B \ \text{beliebig} &&\\
+    \text{2.}\quad & x \not\in B & (1) (\text{Def. 1})&&\\
+    \text{3.}\quad & x \in \bar B & (2) ( \text{Def. 2} )&&\\
+    \text{4.}\quad & x \in A \land x \in \bar B & (1) (3)&&\\
+    \text{5.}\quad & \left( A \setminus B \right) = A \cap \bar B & (1) (4) ( \text{Def. 3})&&\\
+\end{flalign*}
+
+\section{Beweis $(A \setminus B) \cup B = A \cup B$} 
+
+\begin{align*}
+    \text{Def 1.}\quad & \left( A \setminus B \right) \cup B =
+    \left\{ x \mid x \in \left( A \land x \not\in B \right) \lor
+	\left( x \in B \right) \right\} &&\\
+    \text{Def 2.} \quad & A \cup B = \left\{ x \mid x \in A \lor x \in B \right\}&&\\[0.5cm]
+    \text{1.}\quad & \text{Sei} \ x \in (A \setminus B) \cup B &&\\
+    \text{2.}\quad & (\text{1. Fall}) \ ( x \in A ) \land ( x \not\in B ) &
+    (\text{Def.} \ 1, \text{case} \ 1) &&\\
+    \text{3.}\quad & x \in A \cup B & (\text{Def.} 2) (2)&&\\
+    \text{4.}\quad & ( \text{2. Fall}) \ x \in B &
+    (\text{Def.} \ 1, \text{case} \ 2) &&\\
+    \text{5.}\quad & x \in A \cup B & (\text{Def.} \ 2) (4) &&\\
+    \text{6.} \quad & \forall x \in \left( \left( A \setminus B \right) \cup B \right) :
+    x \in \left( A \cup B \right) & (1 \text{-} 5)&&\\
+    \text{7.} \quad & \left( A \setminus B \right) \cup B = A \cup B & (1 \text{-} 5) (\text{us} \forall)
+\end{align*}
+
+\section{Beweis durch vollständige Induktion} 
+Zeige, dass
+\begin{align}
+    \label{3}
+    \sum_{i=0}^n 2 ^{i} = 2 ^{n+1} -1 \quad \text{für alle}\ x \in \mathbb{N}_0
+\end{align}
+Grenzfall \( n=0 \)
+\begin{align}
+    2 ^{0} = 1 = 2 ^{0+1} - 1
+\end{align}
+ist wahr.
+angenommen, (\ref{3}) ist wahr. beweise, dass (\ref{3}) auch für \( n+1 \) gilt:
+\begin{align}
+    \sum_{i=0} ^{n+1} 2 ^{i} &= \sum_{i = 0} ^{n} 2 ^{i} + 2 ^{n+1} \label{ass1}\\
+    &= 2 ^{n+1} -1 + 2 ^{n+1} & (\text{ass. 1} )&&\\
+    &= 2 \cdot \left( 2 ^{n+1} \right) -1 = 2 ^{n+2} - 1
+\end{align}
+
+\section{Beweis durch vollständige Induktion}
+Zeige, dass für \( \left\{ n \in \mathbb{N} \mid n \geq 4 \right\} \) gilt:
+\begin{align}
+\label{ass2}
+    2 ^{n} < n! 
+\end{align}
+Grenzfall \( n = 4 \)
+\begin{align}
+    2 ^{4} = 16 < 4! = 24
+\end{align}
+angenommen, (\ref{ass2}) ist wahr. beweise, dass (\ref{ass2}) auch für \( n+1 \) gilt:
+\begin{align}
+    2 ^{n+1} = 2 \cdot 2 ^{n} < n! \cdot 2 < n! \cdot \left( n+1 \right) =
+    \left( n+1 \right) ! \quad \forall n \geq 4 
+    & & (\text{ass.}\ \ref{ass2})
+\end{align}
+\end{document}
+

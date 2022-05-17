@@ -1,0 +1,59 @@
+
+\documentclass{article}
+
+% Deactivate sectsty warning when loading sectsty {{{
+\usepackage[immediate]{silence}
+\WarningFilter[temp]{latex}{Command}
+\usepackage{sectsty}
+    \sectionfont{\normalfont\sffamily\bfseries\color{blue!40!black}}
+    \subsectionfont{\normalfont\sffamily\bfseries\color{blue!30!black}}
+\DeactivateWarningFilters[temp]
+\makeatletter % disable the runtime redefinitions
+\let\SS@makeulinesect\relax
+\let\SS@makeulinepartchap\relax
+\makeatother
+% }}}
+
+\usepackage[margin=4cm]{geometry}
+    \setlength\parindent{0pt}
+\usepackage{fancyhdr}
+    \pagestyle{fancy}
+\usepackage{fontspec}
+    \setsansfont{Linux Biolinum O}
+\usepackage{polyglossia}
+    \setmainlanguage{english}
+\usepackage{sectsty}
+    \sectionfont{\normalfont\sffamily\bfseries\color{blue!40!black}}
+    \subsectionfont{\normalfont\sffamily\bfseries\color{blue!30!black}}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{siunitx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+    \lstset{language=Python,
+	basicstyle=\footnotesize\ttfamily,
+	breaklines=true,
+	framextopmargin=50pt,
+	frame=bottomline,
+	backgroundcolor=\color{white!86!black},
+	commentstyle=\color{blue},
+	keywordstyle=\color{red},
+	stringstyle=\color{orange!80!black}}
+\usepackage{tikz}
+
+\title{\textsf{\color{blue!40!black}Übungsblatt 2}}
+\author{Maurice Donner \and Jan Hubrich \and Adrian Müller}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\section{}
+
+\end{document}
+
